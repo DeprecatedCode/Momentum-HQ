@@ -70,6 +70,15 @@
     color: #34440f;
 }
 
+@colors_dim_text {
+    color: #dddddd;
+}
+
+@colors_error {
+    background-color: #c1372a;
+    color: #ffffff;
+}
+
 @row_bright {
     border-top: 2px solid rgba(255, 255, 255, 0.5);
     border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
@@ -150,8 +159,13 @@ body {
 .toolbar > span {
     padding: 8px 12px;
     @border-radius(4px);
+    @colors_dim_text;
+    margin-right: -16px;
 
     &.clickable {
+        margin-right: 0;
+        @colors_dark;
+
         &:hover {
             @colors_dark_emphasis;
         }
@@ -183,7 +197,7 @@ body {
      @colors_accent;
      @padding_large;
      
-     margin: 120px auto;
+     margin: 10% auto;
      width: @dialog_width;
      
     .title {
@@ -240,5 +254,42 @@ input:focus {
     
     &:active {
         @colors_dark_alt;
+    }
+}
+
+///////////////////////////
+// METRO THEME: MESSAGES //
+///////////////////////////
+
+.error {
+    @padding_normal;
+    @colors_error;
+    @font_small;
+}
+
+/////////////////////////
+// METRO THEME: PANELS //
+/////////////////////////
+
+.panels-frame {
+    position: fixed;
+    top: 0px;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+}
+
+.panels {
+    display: none;
+    margin: 0 auto;
+    width: 960px;
+    position: relative;
+    @box-shadow(6px);
+    height: 100%;
+    overflow: auto;
+    @colors_bright;
+
+    .panel {
+        @padding_large;
     }
 }

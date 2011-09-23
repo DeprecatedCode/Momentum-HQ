@@ -63,6 +63,8 @@ var hq = {
     
     loggedOut: function(err, obj) {
         hq.member = null;
+        hq.panels = {};
+        $('#hq-panels').html('').hide();
         hq.toolbar();
         hq.dialog(hq.dialogs.loggedOut);
     },
@@ -73,7 +75,8 @@ var hq = {
         var t = $('#hq-toolbar');
         t.html('');
         [
-            {text:'Welcome, '+hq.member.name},
+            {text:'Welcome, '},
+            {text: hq.member.name, click: hq.account},
             {text:'Logout', click: hq.logout}
         ].forEach(function(x) {
             if(typeof x.click === 'function')
@@ -82,6 +85,9 @@ var hq = {
                 $('<span>').appendTo(t).text(x.text);
         });
         t.fadeIn();
-    }
+    },
 
+    account: function() {
+        hq.dialog(hq.dialogs.accountSettings);
+    }
 };

@@ -12,7 +12,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo HQ_BASE_URL; ?>/themes/metro.less" />
     </head>
     <body>
-        <div id="hq-toolbar" class="toolbar"></div>
+        <div class="panels-frame">
+            <div id="hq-panels" class="panels"></div>
+        </div>
         <div id="hq-dialog" class="frame">
             <div class="dialog">
                 <div class="title">Momentum HQ&trade;</div>
@@ -20,5 +22,6 @@
                 <div class="form"></div>
             </div>
         </div>
+        <div id="hq-toolbar" class="toolbar"></div>
     </body>
 </html>

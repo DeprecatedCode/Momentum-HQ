@@ -18,6 +18,7 @@ hq.load = function(path, callback, data, message) {
         success: function(data) {
             if(typeof data !== 'object')
                 return err(xhr, null, 'No data recieved');
+            hq.dialog(null);
             return callback(data);
         }
     });
@@ -42,7 +43,10 @@ hq.dialog = function(o) {
     
     // Close dialog
     if(o === null) {
-        hq.dialogCloseTimeout = window.setTimeout(function() { $("#hq-dialog").fadeOut(); }, 100);
+        hq.dialogCloseTimeout = window.setTimeout(function() {
+            $("#hq-dialog").fadeOut('fast');
+            $("#hq-panels").show().css({opacity: 1});
+        }, 100);
         return;
     }
     
@@ -84,6 +88,7 @@ hq.dialog = function(o) {
         $form.hide();
     }
     
+    $("#hq-panels").css({opacity: 0.5});
     $("#hq-dialog").stop(true).show();
     
     if(o.action && o.action.length)
@@ -121,5 +126,8 @@ hq.dialogs = {
         'To login again, press Continue',
         {type: 'button', text: 'Continue', click: function(){hq.dialog(hq.dialogs.login);}}
     ]},
-    loggingIn: {action: 'Checking your credentials'}
+    loggingIn: {action: 'Checking your credentials'},
+    accountSettings: {action: 'Account information', form: [
+        {type: 'button', text: 'Close'}
+    ]}
 };
