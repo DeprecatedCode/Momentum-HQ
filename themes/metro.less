@@ -1,0 +1,244 @@
+///////////////////////////////
+// METRO THEME: REQUIREMENTS //
+///////////////////////////////
+
+@import 'grid';
+@import 'css';
+
+///////////////////////////////
+// METRO THEME: COLOR SCHEME //
+///////////////////////////////
+
+@base_size: 24px;
+
+@half_size: @base_size / 2;
+
+@font_normal {
+    font-family: Arial, Sans, sans-serif;
+    font-size: @base_size * 2 / 3;
+}
+
+@font_medium {
+    font-family: Arial, Sans, sans-serif;
+    font-size: @base_size * 3 / 4;
+}
+
+@font_large {
+    font-size: @base_size - 2px;
+}
+
+@font_small {
+    font-size: @base_size / 2;
+}
+
+@colors_dark {
+    background-color: #383431;
+    color: #ffffff;
+}
+
+@colors_dark_emphasis {
+    background-color: #423d3a;
+    color: #ffffff;
+}
+
+@colors_dark_alt {
+    background-color: #161514;
+    color: #dddddd;
+}
+
+@colors_bright {
+    background-color: #ffffff;
+    color: #2c2c2c;
+}
+
+@colors_bright_emphasis {
+    background-color: #eeeeee;
+    color: #222222;
+}
+
+@colors_mild {
+    color: #2c2c2c;
+    background-color: #bebebe;
+}
+
+@colors_accent {
+    background-color: #93c32a;
+    color: #ffffff;
+}
+
+@colors_accent_invert {
+    color: #34440f;
+}
+
+@row_bright {
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+@border_mild {
+    border: 2px solid #f6f6f6;
+}
+
+@padding_normal {
+    padding: @base_size / 3  @base_size / 2;  
+}
+
+@padding_large {
+    padding: @base_size;
+}
+
+/////////////////////////
+// METRO THEME: LAYOUT //
+/////////////////////////
+
+body {
+    @font_normal;
+    @stripes;
+    @vertical;
+    @colors_mild;
+}
+
+.header {
+    @colors_dark;
+}
+
+.item {
+    @colors_bright;
+    
+    &:hover {
+        @colors_bright_emphasis;
+    }
+    
+    &.selected: {
+        @colors_accent;
+    }
+}
+
+.module {
+    @colors_bright;
+    
+    label {
+        margin-top: @base_size;
+    }
+    
+    input {
+        @border_mild;
+        @colors_mild;
+        @font_normal;
+    }
+}
+
+.ribbon {
+    @colors_bright_emphasis;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.toolbar {
+    @colors_dark;
+    @border-radius(4px);
+    position: fixed;
+    top: -4px;
+    padding: 13px 0 8px;
+    right: 20px;
+    z-index: 100;
+}
+
+.toolbar > span {
+    padding: 8px 12px;
+    @border-radius(4px);
+
+    &.clickable {
+        &:hover {
+            @colors_dark_emphasis;
+        }
+    
+        &:active {
+            @colors_dark_alt;
+        }
+    }
+}
+
+/////////////////////////
+// METRO THEME: DIALOG //
+/////////////////////////
+
+.frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+}
+
+@dialog_width: 360px;
+
+.dialog {
+     @colors_accent;
+     @padding_large;
+     
+     margin: 120px auto;
+     width: @dialog_width;
+     
+    .title {
+        text-align: center;
+        @font_large;
+        margin-bottom: 1em;
+    }
+    
+    .action {
+        padding: 1em;
+        @row_bright;
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+.form {
+    margin: 0 1px -@base_size;
+
+    .label {
+        .clearfix;
+        @font_normal;
+        margin-top: @half_size;
+    }
+
+    input {
+        @full-width;
+        border: none;
+        @row_bright;
+        @colors_accent_invert;
+        @font_medium;
+        @padding_normal;
+    }
+}
+
+.message {
+    @font_small;
+    float: left;
+    margin: @base_size + 10px 0 @base_size;
+}
+
+.button {
+    margin: @base_size 0 @base_size @half_size;
+    .clickable;
+    float: right;
+    @padding_normal;
+    @colors_dark;
+    
+    &:hover {
+        @colors_dark_emphasis;
+    }
+    
+    &:active {
+        @colors_dark_alt;
+    }
+}
