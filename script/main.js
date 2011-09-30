@@ -13,12 +13,12 @@ var hq = {
     init: function() {
         
         // Check for Momentum API
-        if(!e.app || typeof e.app.members !== 'object' || typeof e.app.members.current !== 'function')
+        if(!e.app || typeof e.app.members !== 'object' || typeof e.app.members._current !== 'function')
             return hq.dialog(hq.dialogs.apiFailure);
         
         // Check login session
         hq.dialog({action: 'Checking session authentication'});
-        e.app.members.current(hq.checkLogin);
+        e.app.members._current(hq.checkLogin);
     },
     
     checkLogin: function(err, member) {
